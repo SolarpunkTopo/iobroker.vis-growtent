@@ -1,0 +1,35 @@
+{
+  "name": "iobroker.vis-growtent",
+  "version": "0.0.1",
+  "description": "Grow Tent widget set for ioBroker.vis (fan, light, heat mat, climate presets for grow phases).",
+  "author": "Your Name <you@example.com>",
+  "license": "MIT",
+  "keywords": [
+    "iobroker",
+    "vis",
+    "widgets",
+    "grow",
+    "growtent",
+    "automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-github-user/ioBroker.vis-growtent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-github-user/ioBroker.vis-growtent/issues"
+  },
+  "homepage": "https://github.com/your-github-user/ioBroker.vis-growtent#readme",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "echo \"No lint configured\" && exit 0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "iobroker.vis": ">=1.4.0"
+  }
+}

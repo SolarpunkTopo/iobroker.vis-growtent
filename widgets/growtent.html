@@ -1,0 +1,411 @@
+<link rel="stylesheet" type="text/css" href="widgets/growtent/css/style.css" />
+<script type="text/javascript" src="widgets/growtent/js/growtent.js"></script>
+
+<!-- ===================== FULL CONTROL WIDGET ===================== -->
+<script id="tplGrowtentFullControl"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-set="growtent"
+        data-vis-name="Grow Tent – Full Control"
+        data-vis-prev="true"
+        data-vis-type="ctrl,info">
+
+  <div class="grow-card" id="gc_<%= this.data.attr('wid') %>">
+
+    <!-- Header -->
+    <div class="gt-header">
+      <div class="gt-title">
+        🌿 Grow Tent
+      </div>
+      <div class="gt-phase-pill">
+        <span class="gt-phase-label">Phase</span>
+        <span class="gt-phase-value">
+          {0_userdata.0.grow.preset_active}
+        </span>
+      </div>
+    </div>
+
+    <!-- Klima-Status -->
+    <div class="gt-row gt-status-row">
+      <div class="gt-status-box">
+        <div class="gt-status-label">Temperatur</div>
+        <div class="gt-status-value">
+          <span class="gt-status-number">{0_userdata.0.grow.status_temp}</span>
+          <span class="gt-status-unit">°C</span>
+        </div>
+      </div>
+      <div class="gt-status-box">
+        <div class="gt-status-label">Luftfeuchte</div>
+        <div class="gt-status-value">
+          <span class="gt-status-number">{0_userdata.0.grow.status_hum}</span>
+          <span class="gt-status-unit">%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hauptschalter -->
+    <div class="gt-row gt-main-switches">
+      <label class="gt-switch">
+        <input type="checkbox"
+               class="gt-toggle-enabled"
+               onclick="vis.setValue('0_userdata.0.grow.enabled', this.checked)">
+        <span class="gt-switch-label">Automation</span>
+      </label>
+
+      <label class="gt-switch">
+        <input type="checkbox"
+               class="gt-toggle-purge"
+               onclick="vis.setValue('0_userdata.0.grow.purge_enabled', this.checked)">
+        <span class="gt-switch-label">Purge</span>
+      </label>
+    </div>
+
+    <!-- Licht / Heizmatte / Boost -->
+    <div class="gt-row gt-actuators-row">
+
+      <div class="gt-actuator">
+        <div class="gt-actuator-top">
+          <span class="gt-actuator-title">Licht</span>
+          <span class="gt-indicator gt-ind-light"></span>
+        </div>
+        <label class="gt-switch small">
+          <input type="checkbox"
+                 class="gt-toggle-light-manual"
+                 onclick="vis.setValue('0_userdata.0.grow.light_manual', this.checked)">
+          <span class="gt-switch-label">Manuell</span>
+        </label>
+      </div>
+
+      <div class="gt-actuator">
+        <div class="gt-actuator-top">
+          <span class="gt-actuator-title">Heizmatte</span>
+          <span class="gt-indicator gt-ind-heat"></span>
+        </div>
+        <label class="gt-switch small">
+          <input type="checkbox"
+                 class="gt-toggle-heat-manual"
+                 onclick="vis.setValue('0_userdata.0.grow.heat_manual', this.checked)">
+          <span class="gt-switch-label">Manuell</span>
+        </label>
+      </div>
+
+      <div class="gt-actuator">
+        <div class="gt-actuator-top">
+          <span class="gt-actuator-title">Boost</span>
+        </div>
+        <button class="gt-btn gt-boost-btn"
+                onclick="vis.setValue('0_userdata.0.grow.boost_request', true)">
+          Boost
+        </button>
+      </div>
+    </div>
+
+    <!-- Klima-Setpoints -->
+    <div class="gt-panel">
+      <div class="gt-panel-title">Klima-Setpoints</div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Temp AN ab (°C)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="18" max="32" step="0.5"
+                 value="{0_userdata.0.grow.temp_on}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.temp_on', parseFloat(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.temp_on}</span>
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Temp AUS bis (°C)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="18" max="32" step="0.5"
+                 value="{0_userdata.0.grow.temp_off}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.temp_off', parseFloat(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.temp_off}</span>
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">rF AN ab (%)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="30" max="90" step="1"
+                 value="{0_userdata.0.grow.hum_on}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.hum_on', parseFloat(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.hum_on}</span>
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">rF AUS bis (%)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="30" max="90" step="1"
+                 value="{0_userdata.0.grow.hum_off}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.hum_off', parseFloat(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.hum_off}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lüfter-Timings & Purge / Boost -->
+    <div class="gt-panel">
+      <div class="gt-panel-title">Lüfter / Purge / Boost</div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Min. EIN (s)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="10" max="600" step="10"
+                 value="{0_userdata.0.grow.minOnSec}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.minOnSec', parseInt(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.minOnSec}</span>
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Min. AUS (s)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="5" max="600" step="5"
+                 value="{0_userdata.0.grow.minOffSec}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.minOffSec', parseInt(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.minOffSec}</span>
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Purge Intervall (min)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="5" max="120" step="5"
+                 value="{0_userdata.0.grow.purge_intervalMin}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.purge_intervalMin', parseInt(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.purge_intervalMin}</span>
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Purge Dauer (s)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="10" max="300" step="5"
+                 value="{0_userdata.0.grow.purge_durationSec}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.purge_durationSec', parseInt(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.purge_durationSec}</span>
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Boost Dauer (s)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="30" max="900" step="10"
+                 value="{0_userdata.0.grow.boost_durationSec}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.boost_durationSec', parseInt(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.boost_durationSec}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heizmatte-Automatik -->
+    <div class="gt-panel">
+      <div class="gt-panel-title">
+        Heizmatte Auto
+        <label class="gt-switch right">
+          <input type="checkbox"
+                 class="gt-toggle-heat-auto"
+                 onclick="vis.setValue('0_userdata.0.grow.heat_enabled', this.checked)">
+          <span class="gt-switch-label">aktiv</span>
+        </label>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">AN unter (°C)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="15" max="30" step="0.5"
+                 value="{0_userdata.0.grow.heat_temp_on}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.heat_temp_on', parseFloat(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.heat_temp_on}</span>
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">AUS über (°C)</div>
+        <div class="gt-slider-wrap">
+          <input type="range" min="15" max="30" step="0.5"
+                 value="{0_userdata.0.grow.heat_temp_off}"
+                 oninput="this.nextElementSibling.innerText=this.value; vis.setValue('0_userdata.0.grow.heat_temp_off', parseFloat(this.value))">
+          <span class="gt-slider-val">{0_userdata.0.grow.heat_temp_off}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Licht-Zeitplan -->
+    <div class="gt-panel">
+      <div class="gt-panel-title">
+        Licht-Zeitplan
+        <label class="gt-switch right">
+          <input type="checkbox"
+                 class="gt-toggle-light-sched"
+                 onclick="vis.setValue('0_userdata.0.grow.light_schedule_enabled', this.checked)">
+          <span class="gt-switch-label">aktiv</span>
+        </label>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Startzeit</div>
+        <div class="gt-time-inputs">
+          <input type="number" min="0" max="23" step="1"
+                 value="{0_userdata.0.grow.light_on_hour}"
+                 onchange="vis.setValue('0_userdata.0.grow.light_on_hour', parseInt(this.value)||0)">
+          <span>:</span>
+          <input type="number" min="0" max="59" step="1"
+                 value="{0_userdata.0.grow.light_on_minute}"
+                 onchange="vis.setValue('0_userdata.0.grow.light_on_minute', parseInt(this.value)||0)">
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Seedling (h)</div>
+        <div class="gt-time-inputs">
+          <input type="number" min="0" max="24" step="1"
+                 value="{0_userdata.0.grow.light_seedling_hours}"
+                 onchange="vis.setValue('0_userdata.0.grow.light_seedling_hours', parseFloat(this.value)||0)">
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Vegetativ (h)</div>
+        <div class="gt-time-inputs">
+          <input type="number" min="0" max="24" step="1"
+                 value="{0_userdata.0.grow.light_vegetative_hours}"
+                 onchange="vis.setValue('0_userdata.0.grow.light_vegetative_hours', parseFloat(this.value)||0)">
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Blüte (h)</div>
+        <div class="gt-time-inputs">
+          <input type="number" min="0" max="24" step="1"
+                 value="{0_userdata.0.grow.light_flower_hours}"
+                 onchange="vis.setValue('0_userdata.0.grow.light_flower_hours', parseFloat(this.value)||0)">
+        </div>
+      </div>
+
+      <div class="gt-row">
+        <div class="gt-field-label">Drying (h)</div>
+        <div class="gt-time-inputs">
+          <input type="number" min="0" max="24" step="1"
+                 value="{0_userdata.0.grow.light_drying_hours}"
+                 onchange="vis.setValue('0_userdata.0.grow.light_drying_hours', parseFloat(this.value)||0)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Presets -->
+    <div class="gt-panel">
+      <div class="gt-panel-title">Presets</div>
+      <div class="gt-presets">
+        <button class="gt-preset seed"  data-mode="seedling"
+                onclick="vis.setValue('0_userdata.0.grow.presets.seedling_apply', true)">
+          Keimling
+        </button>
+        <button class="gt-preset veg"   data-mode="vegetative"
+                onclick="vis.setValue('0_userdata.0.grow.presets.vegetative_apply', true)">
+          Vegetativ
+        </button>
+        <button class="gt-preset flow"  data-mode="flower"
+                onclick="vis.setValue('0_userdata.0.grow.presets.flower_apply', true)">
+          Blüte
+        </button>
+        <button class="gt-preset dry"   data-mode="drying"
+                onclick="vis.setValue('0_userdata.0.grow.presets.drying_apply', true)">
+          Drying
+        </button>
+      </div>
+    </div>
+
+    <!-- Status / Log -->
+    <div class="gt-panel gt-status-panel">
+      <div class="gt-panel-title">Status</div>
+      <div class="gt-status-lines">
+        <div>
+          <span class="gt-status-caption">Grund:</span>
+          <span class="gt-status-text">{0_userdata.0.grow.status_reason}</span>
+        </div>
+        <div>
+          <span class="gt-status-caption">Letzte Aktion:</span>
+          <span class="gt-status-text">{0_userdata.0.grow.status_lastAction}</span>
+        </div>
+        <div>
+          <span class="gt-status-caption">Fehler:</span>
+          <span class="gt-status-text gt-status-error">{0_userdata.0.grow.status_error}</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .grow-card -->
+
+  <% if (vis.binds.growtent && vis.binds.growtent.initFull) { %>
+    <% vis.binds.growtent.initFull(this.data.attr('wid')); %>
+  <% } %>
+
+</script>
+
+<!-- ===================== MONITOR WIDGET (KOMPAKT) ===================== -->
+<script id="tplGrowtentMonitor"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-set="growtent"
+        data-vis-name="Grow Tent – Monitor"
+        data-vis-prev="true"
+        data-vis-type="info">
+
+  <div class="grow-monitor-card" id="gm_<%= this.data.attr('wid') %>">
+    <div class="gm-head">
+      <div class="gm-title">🌿 Grow Tent</div>
+      <div class="gm-phase-chip">
+        {0_userdata.0.grow.preset_active}
+      </div>
+    </div>
+
+    <div class="gm-row gm-main">
+      <div class="gm-metric">
+        <div class="gm-label">Temp</div>
+        <div class="gm-value">
+          <span>{0_userdata.0.grow.status_temp}</span>
+          <span>°C</span>
+        </div>
+      </div>
+      <div class="gm-metric">
+        <div class="gm-label">rF</div>
+        <div class="gm-value">
+          <span>{0_userdata.0.grow.status_hum}</span>
+          <span>%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gm-row gm-state-row">
+      <div class="gm-state">
+        <span class="gm-dot gm-dot-auto"></span>
+        <span>Auto</span>
+      </div>
+      <div class="gm-state">
+        <span class="gm-dot gm-dot-light"></span>
+        <span>Licht</span>
+      </div>
+      <div class="gm-state">
+        <span class="gm-dot gm-dot-heat"></span>
+        <span>Heat</span>
+      </div>
+    </div>
+
+    <div class="gm-row gm-status-line">
+      <span class="gm-status-caption">Grund:</span>
+      <span class="gm-status-text">{0_userdata.0.grow.status_reason}</span>
+    </div>
+    <div class="gm-row gm-status-line small">
+      <span class="gm-status-caption">Fehler:</span>
+      <span class="gm-status-error">{0_userdata.0.grow.status_error}</span>
+    </div>
+  </div>
+
+  <% if (vis.binds.growtent && vis.binds.growtent.initMonitor) { %>
+    <% vis.binds.growtent.initMonitor(this.data.attr('wid')); %>
+  <% } %>
+
+</script>

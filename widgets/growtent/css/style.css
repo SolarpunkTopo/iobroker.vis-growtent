@@ -1,0 +1,493 @@
+.grow-card {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #0f172a, #020617 55%, #020617 100%);
+  color: #e5e7eb;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 14px 14px 16px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+  max-width: 340px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.grow-card .gt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.grow-card .gt-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+.grow-card .gt-phase-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(8, 47, 73, 0.9);
+  border-radius: 999px;
+  padding: 3px 8px;
+  border: 1px solid rgba(125, 211, 252, 0.4);
+  font-size: 11px;
+}
+
+.gt-phase-label {
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: #bae6fd;
+}
+
+.gt-phase-value {
+  font-weight: 600;
+  color: #e0f2fe;
+}
+
+/* Allgemeine Layout-Elemente */
+
+.grow-card .gt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.grow-card .gt-row:last-child {
+  margin-bottom: 0;
+}
+
+.gt-status-row {
+  margin-bottom: 12px;
+}
+
+/* Status-Kacheln */
+
+.gt-status-box {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: radial-gradient(circle, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  margin-right: 6px;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.5);
+}
+
+.gt-status-box:last-child {
+  margin-right: 0;
+}
+
+.gt-status-label {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 2px;
+}
+
+.gt-status-value {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.gt-status-number {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.gt-status-unit {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Switches */
+
+.gt-main-switches {
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.gt-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.gt-switch input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #22c55e;
+}
+
+.gt-switch-label {
+  font-size: 11px;
+  color: #e5e7eb;
+}
+
+.gt-switch.right {
+  margin-left: auto;
+}
+
+.gt-switch.small .gt-switch-label {
+  font-size: 10px;
+}
+
+/* Aktoren-Reihe */
+
+.gt-actuators-row {
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.gt-actuator {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+.gt-actuator-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.gt-actuator-title {
+  font-size: 11px;
+  color: #cbd5f5;
+}
+
+/* Indikatoren */
+
+.gt-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #111827 0, #020617 70%);
+  border: 1px solid rgba(75, 85, 99, 0.9);
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.8);
+}
+
+.gt-indicator.on {
+  background: radial-gradient(circle, #22c55e 0, #064e3b 65%);
+  border-color: #4ade80;
+}
+
+/* Buttons */
+
+.gt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid #38bdf8;
+  background: radial-gradient(circle, #0ea5e9, #0369a1);
+  color: #f9fafb;
+  font-size: 11px;
+  padding: 5px 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 6px 12px rgba(8, 47, 73, 0.75);
+}
+
+.gt-btn:hover {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+}
+
+.gt-boost-btn {
+  font-weight: 600;
+}
+
+/* Panels */
+
+.gt-panel {
+  margin-top: 10px;
+  padding: 8px 10px 10px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+.gt-panel-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+/* Felder / Slider */
+
+.gt-field-label {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-right: 6px;
+  min-width: 110px;
+}
+
+.gt-slider-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gt-slider-wrap input[type="range"] {
+  flex: 1;
+}
+
+.gt-slider-val {
+  min-width: 32px;
+  text-align: right;
+  font-size: 11px;
+  color: #e5e7eb;
+}
+
+/* Zeit-Eingaben */
+
+.gt-time-inputs {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gt-time-inputs input[type="number"] {
+  width: 50px;
+  padding: 2px 4px;
+  font-size: 11px;
+  border-radius: 6px;
+  border: 1px solid rgba(75, 85, 99, 0.9);
+  background: #020617;
+  color: #e5e7eb;
+  box-sizing: border-box;
+}
+
+/* Presets */
+
+.gt-presets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.gt-preset {
+  border-radius: 999px;
+  border: 1px solid #4b5563;
+  padding: 4px 6px;
+  background: radial-gradient(circle, #111827, #020617);
+  font-size: 11px;
+  color: #e5e7eb;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  text-align: center;
+}
+
+.gt-preset.seed { border-color: #4ade80; }
+.gt-preset.veg  { border-color: #22c55e; }
+.gt-preset.flow { border-color: #a855f7; }
+.gt-preset.dry  { border-color: #facc15; }
+
+.gt-preset:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.gt-preset.active {
+  background: radial-gradient(circle, #22c55e, #14532d);
+  color: #022c22;
+  border-color: #bbf7d0;
+}
+
+/* Status-Panel */
+
+.gt-status-panel {
+  margin-bottom: 0;
+}
+
+.gt-status-lines {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.gt-status-lines > div {
+  margin-bottom: 2px;
+}
+
+.gt-status-caption {
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.gt-status-text {
+  color: #e5e7eb;
+}
+
+.gt-status-error {
+  color: #fca5a5;
+}
+
+/* ================== MONITOR WIDGET (KOMPAKT) ================== */
+
+.grow-monitor-card {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #0f172a, #020617 60%);
+  color: #e5e7eb;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 10px 12px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.8);
+  max-width: 260px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+.gm-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.gm-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #bae6fd;
+}
+
+.gm-phase-chip {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+/* Phase-Farben */
+.gm-phase-chip.phase-seedling  { border-color: #4ade80; color: #bbf7d0; }
+.gm-phase-chip.phase-vegetative{ border-color: #22c55e; color: #bbf7d0; }
+.gm-phase-chip.phase-flower    { border-color: #a855f7; color: #e9d5ff; }
+.gm-phase-chip.phase-drying    { border-color: #facc15; color: #fef9c3; }
+.gm-phase-chip.phase-custom    { border-color: #38bdf8; color: #e0f2fe; }
+
+.gm-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.gm-row:last-child {
+  margin-bottom: 0;
+}
+
+.gm-main {
+  margin-bottom: 6px;
+}
+
+.gm-metric {
+  flex: 1;
+  padding: 4px 6px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  margin-right: 4px;
+  box-sizing: border-box;
+}
+
+.gm-metric:last-child {
+  margin-right: 0;
+}
+
+.gm-label {
+  font-size: 10px;
+  color: #9ca3af;
+  margin-bottom: 1px;
+}
+
+.gm-value {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.gm-value span:first-child {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.gm-value span:last-child {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.gm-state-row {
+  margin-bottom: 6px;
+}
+
+.gm-state {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  color: #9ca3af;
+  gap: 4px;
+}
+
+.gm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #111827 0, #020617 70%);
+  border: 1px solid rgba(75, 85, 99, 0.9);
+}
+
+/* Dot-Farben wenn aktiv */
+.gm-dot.on.gm-dot-auto {
+  background: radial-gradient(circle, #22c55e 0, #064e3b 70%);
+  border-color: #4ade80;
+}
+
+.gm-dot.on.gm-dot-light {
+  background: radial-gradient(circle, #facc15 0, #92400e 70%);
+  border-color: #facc15;
+}
+
+.gm-dot.on.gm-dot-heat {
+  background: radial-gradient(circle, #fb7185 0, #7f1d1d 70%);
+  border-color: #fb7185;
+}
+
+.gm-status-line {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.gm-status-line.small {
+  font-size: 9px;
+}
+
+.gm-status-caption {
+  font-weight: 500;
+  margin-right: 3px;
+}
+
+.gm-status-text {
+  color: #e5e7eb;
+}
+
+.gm-status-error {
+  color: #fca5a5;
+}

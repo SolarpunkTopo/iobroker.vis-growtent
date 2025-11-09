@@ -1,0 +1,55 @@
+{
+  "common": {
+    "name": "vis-growtent",
+    "version": "0.0.1",
+    "news": {
+      "0.0.1": {
+        "en": "Initial release of Grow Tent VIS widget set",
+        "de": "Erste Veröffentlichung des Grow-Tent-VIS-Widget-Sets"
+      }
+    },
+    "title": "Grow Tent VIS Widgets",
+    "titleLang": {
+      "en": "Grow Tent VIS Widgets",
+      "de": "Grow-Tent-VIS-Widgets"
+    },
+    "desc": {
+      "en": "Widget set for controlling and monitoring an indoor grow tent (fan, light, heat mat, climate presets).",
+      "de": "Widget-Set zur Steuerung und Überwachung eines Grow-Zeltes (Lüfter, Licht, Heizmatte, Klimapresets)."
+    },
+    "authors": [
+      "Your Name <you@example.com>"
+    ],
+    "keywords": [
+      "iobroker",
+      "vis",
+      "grow",
+      "growtent",
+      "climate",
+      "fan",
+      "lighting",
+      "automation"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "mode": "none",
+    "loglevel": "info",
+    "enabled": true,
+    "icon": "vis-growtent.png",
+    "extIcon": "https://raw.githubusercontent.com/your-github-user/ioBroker.vis-growtent/main/admin/vis-growtent.png",
+    "readme": "https://github.com/your-github-user/ioBroker.vis-growtent/blob/main/README.md",
+    "localLink": "",
+    "onlyWWW": true,
+    "type": "visualization-widgets",
+    "connectionType": "local",
+    "dataSource": "push",
+    "tier": 3,
+    "restartAdapters": [
+      "vis",
+      "vis-2"
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
+}
