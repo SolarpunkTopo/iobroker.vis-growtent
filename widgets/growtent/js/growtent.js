@@ -16,20 +16,37 @@ vis.binds.growtent.initFull = function (wid, data) {
 
     data = data || {};
 
-    // Widget-Attribute -> Mapping-States unter 0_userdata.0.grow.config.*
-    function setConfigFromAttr(attrName, configKey) {
+    // Widget-Parameter -> Config-States unter 0_userdata.0.grow.config.*
+    function mapAttrToConfig(attrName, configKey) {
         if (data[attrName]) {
-            // configKey z.B. "fanId", "lightId", ...
-            vis.setValue('0_userdata.0.grow.config.' + configKey, data[attrName]);
+            var oid = data[attrName];
+            vis.setValue('0_userdata.0.grow.config.' + configKey, oid);
         }
     }
 
-    setConfigFromAttr('fanEndpoint',   'fanId');
-    setConfigFromAttr('lightEndpoint', 'lightId');
-    setConfigFromAttr('heatEndpoint',  'heatmatId');
-    setConfigFromAttr('tempEndpoint',  'tempId');
-    setConfigFromAttr('humEndpoint',   'humId');
-    // Helper: Indikator (Licht/Heiz) färben
+    mapAttrToConfig('fanEndpoint',   'fanId');
+    mapAttrToConfig('lightEndpoint', 'lightId');
+    mapAttrToConfig('heatEndpoint',  'heatmatId');
+    mapAttrToConfig('tempSensor',    'tempId');
+    mapAttrToConfig('humSensor',     'humId');
+
+    // --- ab hier dein bisheriger Code unverändert ---
+    // Helper: Checkbox von State spiegeln
+    function bindCheckbox(oid, selector) {
+        if (!oid) return;
+        var full = oid + '.val';
+
+        function update() {
+            var v = !!vis.states[full];
+            $root.find(selector).prop('checked', v);
+        }
+
+        update();
+        vis.states.bind(full, function () {
+            update();
+        });
+    }
+
     function bindIndicator(oid, selector) {
         if (!oid) return;
         var full = oid + '.val';
@@ -45,7 +62,6 @@ vis.binds.growtent.initFull = function (wid, data) {
         });
     }
 
-    // Preset-Buttons aktiv markieren
     function bindPresetActive() {
         var oid = '0_userdata.0.grow.preset_active';
         var full = oid + '.val';
@@ -62,7 +78,6 @@ vis.binds.growtent.initFull = function (wid, data) {
         });
     }
 
-    // Bindings setzen
     bindCheckbox('0_userdata.0.grow.enabled',               '.gt-toggle-enabled');
     bindCheckbox('0_userdata.0.grow.purge_enabled',         '.gt-toggle-purge');
     bindCheckbox('0_userdata.0.grow.heat_enabled',          '.gt-toggle-heat-auto');
@@ -77,6 +92,7 @@ vis.binds.growtent.initFull = function (wid, data) {
 
     console.log('vis-growtent: FullControl widget initialised (' + wid + '), version ' + vis.binds.growtent.version);
 };
+
 
 /**
  * Kompaktes Monitor-Widget initialisieren
