@@ -9,27 +9,26 @@ vis.binds.growtent.version = '0.0.3';
 /**
  * Vollständiges Control-Widget initialisieren
  */
-vis.binds.growtent.initFull = function (wid) {
+vis.binds.growtent.initFull = function (wid, data) {
     var rootId = '#gc_' + wid;
     var $root = $(rootId);
     if (!$root.length) return;
 
-    // Helper: Checkbox von State spiegeln
-    function bindCheckbox(oid, selector) {
-        if (!oid) return;
-        var full = oid + '.val';
+    data = data || {};
 
-        function update() {
-            var v = !!vis.states[full];
-            $root.find(selector).prop('checked', v);
+    // Widget-Attribute -> Mapping-States unter 0_userdata.0.grow.config.*
+    function setConfigFromAttr(attrName, configKey) {
+        if (data[attrName]) {
+            // configKey z.B. "fanId", "lightId", ...
+            vis.setValue('0_userdata.0.grow.config.' + configKey, data[attrName]);
         }
-
-        update();
-        vis.states.bind(full, function () {
-            update();
-        });
     }
 
+    setConfigFromAttr('fanEndpoint',   'fanId');
+    setConfigFromAttr('lightEndpoint', 'lightId');
+    setConfigFromAttr('heatEndpoint',  'heatmatId');
+    setConfigFromAttr('tempEndpoint',  'tempId');
+    setConfigFromAttr('humEndpoint',   'humId');
     // Helper: Indikator (Licht/Heiz) färben
     function bindIndicator(oid, selector) {
         if (!oid) return;

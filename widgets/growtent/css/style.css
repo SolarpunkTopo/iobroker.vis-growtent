@@ -7,9 +7,8 @@
   padding: 14px 14px 16px;
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
 
-  /* NEU: statt fixer Card-Breite an Widget-Breite anpassen */
-  width: 100%;
-  max-width: 100%;
+  /* WICHTIG: wieder wie vorher, aber etwas breiter */
+  max-width: 480px;   /* vorher 340px, kein width:100% */
   box-sizing: border-box;
 }
 

@@ -8,7 +8,9 @@
         data-vis-set="growtent"
         data-vis-name="Grow Tent – Full Control"
         data-vis-prev='![](widgets/growtent/img/prev_full.png)'
-        data-vis-type="ctrl,info">
+        data-vis-type="ctrl,info"
+        data-vis-attrs="fanEndpoint/id;lightEndpoint/id;heatEndpoint/id;tempEndpoint/id;humEndpoint/id">
+
 
   <div class="grow-card" id="gc_<%= this.data.attr('wid') %>">
 
@@ -339,9 +341,10 @@
 
   </div><!-- .grow-card -->
 
-  <% if (vis.binds.growtent && vis.binds.growtent.initFull) { %>
-    <% vis.binds.growtent.initFull(this.data.attr('wid')); %>
+    <% if (vis.binds.growtent && vis.binds.growtent.initFull) { %>
+    <% vis.binds.growtent.initFull(this.data.attr('wid'), this.data); %>
   <% } %>
+
 
 </script>
 
